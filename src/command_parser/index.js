@@ -9,9 +9,9 @@ const parser = async (data, stream) => {
     if (inputCommand.includes('mouse')) {
         await Movement(inputCommand, stream);
     } else if (inputCommand.includes('draw')) {
-        await Drawing(inputCommand);
+        await Drawing(inputCommand, stream);
     } else if (inputCommand.includes('prnt')) {
-        await Prtsc(inputCommand)
+        await Prtsc(inputCommand, stream)
     } else {
         console.log('err command')
     }
