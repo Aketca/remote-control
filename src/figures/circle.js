@@ -12,7 +12,6 @@ export const drawCircle = async ( x, y, radius ) => {
             if (i === 6) {
                 mouse.pressButton(Button.LEFT);
             }
-            console.log(i);
             xPosition =  x + radius * Math.cos(i);
             yPosition = y + radius * Math.sin(i);
             point = new Point(xPosition, yPosition);

@@ -1,6 +1,6 @@
 import Movement from "../modules/movement.js";
 import Drawing from "../modules/drawing.js";
-import Prtsc from "../modules/prtsc.js";
+import PrtSc from "../modules/prtsc.js";
 
 const parser = async (data, stream) => {
     const inputCommand = data.toString();
@@ -11,7 +11,7 @@ const parser = async (data, stream) => {
     } else if (inputCommand.includes('draw')) {
         await Drawing(inputCommand, stream);
     } else if (inputCommand.includes('prnt')) {
-        await Prtsc(inputCommand, stream)
+        await PrtSc(inputCommand, stream)
     } else {
         console.log('err command')
     }

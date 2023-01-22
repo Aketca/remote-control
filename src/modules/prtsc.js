@@ -1,4 +1,21 @@
-const Prtsc = (inputCommand) => {
-    console.log('Prtscr module', inputCommand)
+import { Region, screen, mouse } from '@nut-tree/nut-js';
+import Jimp from 'jimp';
+
+const PrtSc = async (inputCommand, stream) => {
+    const { x, y } = await mouse.getPosition();
+
+    const region = new Region(
+        Math.max(0, x - 100),
+        Math.max(0, y - 100),
+        200,
+        200
+    )
+
+    const screenShoot = await screen.grabRegion(region);
+    const image = new Jimp(200,200);
+    image.bitmap.data = screenShoot.data;
+    let jimpBuffer = await image.getBufferAsync(Jimp.MIME_JPEG);
+    const base64 = jimpBuffer.toString("base64");
+    stream.write(`prnt_scrn ${base64}`);
 }
-export default Prtsc;
+export default PrtSc;

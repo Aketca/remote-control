@@ -22,22 +22,11 @@ const wss = new WebSocketServer({ port: WS_PORT });
 wss.on('connection', function connection(ws) {
     console.log(`Websocket start connection on ${WS_PORT} port`);
     const duplex = createWebSocketStream(ws, {
-        // encoding: 'utf8',
-        // defaultEncoding: 'utf8',
         decodeStrings: false,
     });
     duplex.on('data', async (data) => {
         await parser(data, duplex);
     });
-
-    // duplex.pipe(process.stdout);
-    // process.stdin.pipe(duplex);
-    //
-    // ws.on('message', function message(data) {
-    //
-    // });
-    //
-    // ws.send('something');
 });
 
 wss.on("listening", () =>
