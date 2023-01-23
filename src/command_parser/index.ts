@@ -1,8 +1,9 @@
-import Movement from "../modules/movement.js";
-import Drawing from "../modules/drawing.js";
-import PrtSc from "../modules/prtsc.js";
+import Movement from "../modules/movement";
+import Drawing from "../modules/drawing";
+import PrtSc from "../modules/prtsc";
+import { Duplex } from 'stream';
 
-const parser = async (data, stream) => {
+const parser = async (data: Buffer, stream: Duplex) => {
     const inputCommand = data.toString();
     console.log('received from client: ', inputCommand);
 

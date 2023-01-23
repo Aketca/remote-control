@@ -1,7 +1,6 @@
-import { httpServer } from "./src/http_server/index.js";
-import { mouse } from "@nut-tree/nut-js";
+import { httpServer } from "./src/http_server";
 import {WebSocketServer, createWebSocketStream} from "ws";
-import parser from "./src/command_parser/index.js";
+import parser from "./src/command_parser/index";
 
 const HTTP_PORT = 8181;
 const WS_PORT = 8080;
@@ -24,7 +23,7 @@ wss.on('connection', function connection(ws) {
     const duplex = createWebSocketStream(ws, {
         decodeStrings: false,
     });
-    duplex.on('data', async (data) => {
+    duplex.on('data', async (data: Buffer) => {
         await parser(data, duplex);
     });
 });

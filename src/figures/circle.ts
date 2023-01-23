@@ -1,6 +1,6 @@
 import {Button, mouse, Point} from '@nut-tree/nut-js';
 
-export const drawCircle = async ( x, y, radius ) => {
+export const drawCircle = async ( x: number, y: number, radius: number ) => {
     let i = 0;
     let xPosition;
     let yPosition;

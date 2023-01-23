@@ -1,9 +1,10 @@
-import {drawCircle} from "../figures/circle.js";
-import {Rectangle} from '../figures/rectangle.js';
+import {drawCircle} from "../figures/circle";
+import {Rectangle} from '../figures/rectangle';
 import {mouse} from "@nut-tree/nut-js";
+import { Duplex } from 'stream';
 
 
-const Drawing = async (inputCommand, stream) => {
+const Drawing = async (inputCommand: string, stream: Duplex) => {
     const { x, y } = await mouse.getPosition();
     if (inputCommand.includes('circle')) {
         const value = parseInt(inputCommand.slice(inputCommand.indexOf(' ') + 1));

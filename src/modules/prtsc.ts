@@ -1,7 +1,8 @@
 import { Region, screen, mouse } from '@nut-tree/nut-js';
 import Jimp from 'jimp';
+import { Duplex } from 'stream';
 
-const PrtSc = async (inputCommand, stream) => {
+const PrtSc = async (inputCommand: string, stream: Duplex) => {
     const { x, y } = await mouse.getPosition();
 
     const region = new Region(
