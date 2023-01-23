@@ -12,9 +12,10 @@ const PrtSc = async (inputCommand, stream) => {
     )
 
     const screenShoot = await screen.grabRegion(region);
+    const fixedColors = await screenShoot.toRGB();
     const image = new Jimp(200,200);
-    image.bitmap.data = screenShoot.data;
-    let jimpBuffer = await image.getBufferAsync(Jimp.MIME_JPEG);
+    image.bitmap.data = fixedColors.data;
+    let jimpBuffer = await image.getBufferAsync(Jimp.MIME_PNG);
     const base64 = jimpBuffer.toString("base64");
     stream.write(`prnt_scrn ${base64}`);
 }
